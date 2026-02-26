@@ -1,7 +1,7 @@
-# 👤 Face Detection System
+# 👤 Face Detection using OpenCV
 
-A computer vision project that detects human faces in images or video streams using machine learning techniques.  
-This project demonstrates real-time face detection using industry-standard libraries and clean project architecture.
+A real-time face detection system built using OpenCV and Haar Cascade Classifier.  
+This project captures live video from a webcam and detects human faces with bounding boxes and labels.
 
 ---
 
@@ -9,38 +9,30 @@ This project demonstrates real-time face detection using industry-standard libra
 
 This application:
 
-- Detects human faces in images
-- Supports real-time webcam face detection
+- Uses OpenCV for computer vision
+- Loads a pre-trained Haar Cascade model
+- Captures real-time video from webcam
+- Detects faces in each frame
 - Draws bounding boxes around detected faces
-- Demonstrates practical computer vision implementation
+- Displays "FACE DETECTED" label
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Technologies Used
 
 - Python 3.x
-- OpenCV
-- NumPy
-
-(Optional depending on your implementation)
-- Haar Cascades
-- Deep Learning-based detector (DNN / CNN)
+- OpenCV (cv2)
+- Haar Cascade Classifier (Viola-Jones Algorithm)
 
 ---
 
 ## 📂 Project Structure
 
 ```bash
-face-detection/
-├── src/
-│   ├── face_detector.py      # Main detection script
-│   ├── utils.py              # Helper functions (if any)
-├── models/
-│   └── haarcascade_frontalface_default.xml
-├── images/
-│   └── sample.jpg
-├── README.md
-└── requirements.txt
+Face-Detection/
+├── face-reco.py
+├── haarcascade_frontalface_default.xml
+└── README.md
 ```
 
 ---
@@ -49,89 +41,64 @@ face-detection/
 
 ### 1️⃣ Prerequisites
 
-Ensure you have:
+Make sure you have:
 
-- Python 3.x
+- Python 3.x installed
 - pip installed
 
 ---
 
-### 2️⃣ Installation
-
-Clone the repository:
+### 2️⃣ Install Dependencies
 
 ```bash
-git clone https://github.com/your-username/face-detection.git
-cd face-detection
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
+pip install opencv-python
 ```
 
 ---
 
-## ▶️ Running the Project
-
-### 🔹 Detect Faces from Image
+## ▶️ Run the Project
 
 ```bash
-python src/face_detector.py --image images/sample.jpg
+python face-reco.py
 ```
-
-### 🔹 Real-Time Webcam Detection
-
-```bash
-python src/face_detector.py --webcam
-```
-
-The program will:
-
-- Open the webcam
-- Detect faces in real time
-- Draw bounding boxes
-- Press `q` to quit
 
 ---
 
-## 🧠 How It Works
+## 🎥 How It Works
 
-### Face Detection Algorithm
+1. Loads the Haar Cascade classifier for frontal face detection.
+2. Opens the default webcam (device index 0).
+3. Converts each frame to grayscale.
+4. Detects faces using:
+
+```python
+detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
+```
+
+5. Draws a green rectangle around detected faces.
+6. Displays "FACE DETECTED" below the face.
+7. Press **ESC key** to exit.
+
+---
+
+## 🧠 Face Detection Method
 
 This project uses:
 
-- Haar Cascade Classifier (Viola-Jones Algorithm)
+**Haar Cascade Classifier**
 
-OR
-
-- Deep Learning-based detector (if implemented)
-
-The algorithm works by:
-
-1. Converting the image to grayscale
-2. Scanning the image at multiple scales
-3. Detecting facial features
-4. Returning bounding box coordinates
+- Based on the Viola-Jones object detection framework
+- Fast and lightweight
+- Suitable for real-time detection
+- Works by detecting facial features at multiple scales
 
 ---
 
-## 📸 Example Output
+## ⌨️ Controls
 
-- Face detected with bounding rectangle
-- Real-time detection from webcam
-
-(Add screenshots here if available)
-
----
-
-## 🎯 Features
-
-- Real-time detection
-- Lightweight implementation
-- Easy to extend
-- Clean project structure
+| Key | Action |
+|-----|--------|
+| ESC | Exit the application |
 
 ---
 
@@ -140,30 +107,39 @@ The algorithm works by:
 Press:
 
 ```
-q
+ESC
 ```
 
-to close the webcam window.
+The webcam will be released and all windows will close properly.
+
+---
+
+## 🎯 Features
+
+- Real-time face detection
+- Lightweight and fast
+- Beginner-friendly implementation
+- Clean and simple structure
 
 ---
 
 ## 🚀 Future Improvements
 
-- Face recognition (identify specific individuals)
-- Emotion detection
-- Age & gender prediction
-- Deployment as web application
-- Integration with Streamlit or Flask
+- Add face recognition
+- Add multiple face tracking
+- Add emotion detection
+- Convert into a web application
+- Deploy using Flask or Streamlit
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License.
+This project is open-source and free to use.
 
 ---
 
 ## 👤 Author
 
-Vaishnavi Prashant Nayak
+Vaishnavi Prashant Nayak 
 GitHub: https://github.com/VaishnaviNayak2023
